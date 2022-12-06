@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:id="@+id/main_layout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".9"
+        android:background="#766044"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:contentDescription="Banner"
+                app:srcCompat="@drawable/banner"></ImageView>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="casual"
+                android:text="Elements"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+        </RelativeLayout>
+
+        <TableLayout
+            android:id="@+id/elements_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1">
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/pyro"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Pyro"
+                    app:srcCompat="@drawable/element_pyro" />
+
+                <ImageView
+                    android:id="@+id/hydro"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Hydro"
+                    app:srcCompat="@drawable/element_hydro" />
+
+                <ImageView
+                    android:id="@+id/cryo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Cryo"
+                    app:srcCompat="@drawable/element_cryo" />
+
+                <ImageView
+                    android:id="@+id/electro"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Electro"
+                    app:srcCompat="@drawable/element_electro" />
+
+            </TableRow>
+
+            <TableRow android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/dendro"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Dendro"
+                    app:srcCompat="@drawable/element_dendro" />
+
+                <ImageView
+                    android:id="@+id/geo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Geo"
+                    app:srcCompat="@drawable/element_geo" />
+
+                <ImageView
+                    android:id="@+id/anemo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/element_bg"
+                    android:contentDescription="Anemo"
+                    app:srcCompat="@drawable/element_anemo" />
+
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calculator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="#766044"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/first"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/element_bg"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <LinearLayout
+            android:id="@+id/second"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/element_bg"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3">
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#fff6d5"
+            android:fontFamily="casual"
+            android:text="Combine"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
