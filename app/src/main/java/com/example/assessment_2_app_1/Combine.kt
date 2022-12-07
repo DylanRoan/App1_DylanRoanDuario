@@ -4,7 +4,9 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
@@ -16,6 +18,8 @@ import kotlin.concurrent.schedule
 class Combine : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_combine)
 
         //make output text and return button invisible
@@ -63,7 +67,11 @@ class Combine : AppCompatActivity() {
         }
 
         //returns back to calculator
-        button.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+        button.setOnClickListener {
+            var go = Intent(this, MainActivity::class.java)
+            go.putExtra("elementsPopup", intent.getStringExtra("elementsPopup").toString())
+            startActivity(go)
+        }
     }
 
     //gets drawable from string

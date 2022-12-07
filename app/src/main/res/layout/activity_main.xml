@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:id="@+id/main_layout">
+    android:id="@+id/main_layout"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,77 +44,153 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:layout_weight="1">
 
             <TableRow>
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/pyro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Pyro"
+                        app:srcCompat="@drawable/element_pyro" />
 
-                <ImageView
-                    android:id="@+id/pyro"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Pyro"
-                    app:srcCompat="@drawable/element_pyro" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Fire"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/hydro"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Hydro"
-                    app:srcCompat="@drawable/element_hydro" />
 
-                <ImageView
-                    android:id="@+id/cryo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Cryo"
-                    app:srcCompat="@drawable/element_cryo" />
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/hydro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Hydro"
+                        app:srcCompat="@drawable/element_hydro" />
 
-                <ImageView
-                    android:id="@+id/electro"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Electro"
-                    app:srcCompat="@drawable/element_electro" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Water"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/cryo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Cryo"
+                        app:srcCompat="@drawable/element_cryo" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Ice"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/electro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Electro"
+                        app:srcCompat="@drawable/element_electro" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Electricity"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
             </TableRow>
 
             <TableRow android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/dendro"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Dendro"
-                    app:srcCompat="@drawable/element_dendro" />
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/dendro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Dendro"
+                        app:srcCompat="@drawable/element_dendro" />
 
-                <ImageView
-                    android:id="@+id/geo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Geo"
-                    app:srcCompat="@drawable/element_geo" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Plant"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/anemo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/element_bg"
-                    android:contentDescription="Anemo"
-                    app:srcCompat="@drawable/element_anemo" />
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/geo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Geo"
+                        app:srcCompat="@drawable/element_geo" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Earth"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/anemo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/element_bg"
+                        android:contentDescription="Anemo"
+                        app:srcCompat="@drawable/element_anemo" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="casual"
+                        android:text="Wind"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
             </TableRow>
 
@@ -142,6 +219,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3" />
 
+        <TextView
+            android:id="@+id/first_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/first"
+            app:layout_constraintStart_toStartOf="@+id/first"
+            app:layout_constraintTop_toBottomOf="@+id/first" />
+
         <LinearLayout
             android:id="@+id/second"
             android:layout_width="100dp"
@@ -153,9 +243,20 @@
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3">
+            app:layout_constraintVertical_bias="0.3"/>
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/second_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/second"
+            app:layout_constraintStart_toStartOf="@+id/second"
+            app:layout_constraintTop_toBottomOf="@+id/second" />
 
         <Button
             android:id="@+id/button"

@@ -6,6 +6,7 @@ android:layout_height="wrap_content"
 android:background="#AB000000">
 
     <TextView
+        android:id="@+id/popup_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -15,7 +16,7 @@ android:background="#AB000000">
         android:layout_marginBottom="30dp"
         android:fontFamily="casual"
         android:textColor="@color/white"
-        android:text="Welcome to Element Combiner!\n\nTo combine elements, select two elements from the list and press:\n\nCombine!"
+        android:text=""
         android:textAlignment="center"
         android:textSize="22sp" />
 

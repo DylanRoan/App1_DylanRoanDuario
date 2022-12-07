@@ -3,13 +3,9 @@ package com.example.assessment_2_app_1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import android.widget.Toast
+import android.util.Log
+import android.view.*
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -22,17 +18,42 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
 
         //initialize the declared variables
         elements = arrayOf(anemo, geo, pyro, hydro, cryo, electro, dendro)
         pair = arrayOf()
 
+        //Could not figure out .getBooleanArrayExtra so opted for strings instead
+        var elementsPopupString : String = if (intent.getStringExtra("elementsPopup").toString() == "null") "false,false,false,false,false,false,false" else intent.getStringExtra("elementsPopup").toString()
+        var elementsPopup = elementsPopupString.split(",").toMutableList()
+
+        Log.i("WAH_INTENT", intent.getStringExtra("elementsPopup").toString())
+        Log.i("WAH_GET", elementsPopupString)
+        Log.i("WAH_SPLIT", elementsPopup.toString())
+        //create descriptions for each element
+        var descriptions = arrayOf(
+            "Anemo\n\nThe embodiment of wind.\n\nClick again to dismiss.",
+            "Geo\n\nThe embodiment of earth.\n\nClick again to dismiss.",
+            "Pyro\n\nThe embodiment of fire.\n\nClick again to dismiss.",
+            "Hydro\n\nThe embodiment of water.\n\nClick again to dismiss.",
+            "Cryo\n\nThe embodiment of ice.\n\nClick again to dismiss.",
+            "Electro\n\nThe embodiment of energy.\n\nClick again to dismiss.",
+            "Dendro\n\nThe embodiment of plant life.\n\nClick again to dismiss.")
+
         //create onClickListener(s) for the different elements/images
-        for (e in elements)
-        {
-            e.setOnClickListener {
-                arrayPairHandler(e) //handles the two empty boxes and the 'pair' array
+        elements.forEachIndexed { index, imageView ->
+            imageView.setOnClickListener {
+                arrayPairHandler(imageView) //handles the two empty boxes and the 'pair' array
+
+                //handles initial popup for each element
+                if (elementsPopup[index] == "false")
+                {
+                    elementsPopup[index] = "true"
+                    popupView(descriptions[index])
+                }
             }
         }
 
@@ -50,12 +71,15 @@ class MainActivity : AppCompatActivity() {
 
                 intent.putExtra("result", elementCombiner())
 
+                intent.putExtra("elementsPopup", elementsPopup.toString()
+                    .replace("[ \\[\\]]".toRegex(), ""))
+
                 startActivity(intent)
             }
         }
 
         //posts popup view only after the launch screen
-        main_layout.post { if (intent.getBooleanExtra("popup", false)) popupView()}
+        main_layout.post { if (intent.getBooleanExtra("popup", false)) popupView("Welcome to Element Combiner!\n\nTo combine elements, select two elements from the list and press:\n\nCombine!")}
 
     }
 
@@ -64,10 +88,10 @@ class MainActivity : AppCompatActivity() {
     private fun arrayPairHandler(e: ImageView) {
         //Section to check if array has space and to add items
         var text = e.contentDescription.toString()
-        if (e in pair)
+        if (pair.any { e.contentDescription == it.contentDescription })
         {
             val arr = pair.toMutableList()
-            arr.remove(e)
+            arr.remove(if (e.contentDescription == pair[0].contentDescription) pair[0] else pair[1])
             pair = arr.toTypedArray()
             text += " removed!"
         }
@@ -95,9 +119,14 @@ class MainActivity : AppCompatActivity() {
 
         //For the boxes
         first.removeAllViews()
+        first_text.text = ""
+
         second.removeAllViews()
+        second_text.text = ""
+
         if (pair.isNotEmpty())
         {
+            //create imageview for first element
             val imageView = ImageView(this)
 
             imageView.layoutParams = LinearLayout.LayoutParams(
@@ -108,11 +137,19 @@ class MainActivity : AppCompatActivity() {
                     weight = 1f
             }
             imageView.setImageDrawable(pair[0].drawable)
+            imageView.contentDescription = pair[0].contentDescription
 
             first.addView(imageView)
+
+            //set text of first element
+            first_text.text = pair[0].contentDescription.toString()
+
+            //click to remove element
+            imageView.setOnClickListener {arrayPairHandler(imageView)}
         }
         if (pair.size > 1)
         {
+            //create imageview for second element
             val imageView = ImageView(this)
 
             imageView.layoutParams = LinearLayout.LayoutParams(
@@ -123,8 +160,15 @@ class MainActivity : AppCompatActivity() {
                     weight = 1f
                 }
             imageView.setImageDrawable(pair[1].drawable)
+            imageView.contentDescription = pair[1].contentDescription
 
             second.addView(imageView)
+
+            //set text for second element
+            second_text.text = pair[1].contentDescription.toString()
+
+            //click to remove element
+            imageView.setOnClickListener {arrayPairHandler(imageView)}
         }
     }
 
@@ -164,7 +208,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Function for the popup view
-    fun popupView()
+    fun popupView(message : String)
     {
         //inflate popup window
         var inflater : LayoutInflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -177,6 +221,7 @@ class MainActivity : AppCompatActivity() {
         //show popup
         window.showAtLocation(calculator, Gravity.CENTER, 0, 0)
 
+        message.also { popup.findViewById<TextView>(R.id.popup_text).text = it }
         //listener for when the popup is touched
         popup.setOnClickListener {
             window.dismiss()

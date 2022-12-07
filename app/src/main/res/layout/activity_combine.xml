@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Combine"
-    android:background="#9C000000">
+    android:background="#9C000000"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
     <Button
         android:id="@+id/button"
